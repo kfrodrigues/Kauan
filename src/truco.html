@@ -283,6 +283,10 @@ section { padding-block: 56px; border-top: 1px solid var(--felt-line); }
 .place span { white-space: nowrap; }
 .place .gold { font-weight: 700; color: #1c6b46; }
 
+.force-photo { margin: 0 0 32px; background: #fff; border-radius: 14px; padding: 12px; box-shadow: 0 10px 24px rgba(0,0,0,.28); max-width: 820px; }
+.force-photo img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.force-photo figcaption { color: var(--ink-soft); font-size: .85rem; text-align: center; padding-top: 8px; font-weight: 500; }
+
 footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; border-top: 1px solid var(--felt-line); }
 
 @media (max-width: 900px) {
@@ -452,11 +456,16 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
     <div class="sec-head">
       <div class="eyebrow">Da mais forte para a mais fraca</div>
       <h2>Tabela de força do truco</h2>
-      <p class="lead">No truco mineiro as manilhas são fixas. No paulista elas mudam a cada mão conforme a vira. Escolha o jeito que a galera joga.</p>
+      <p class="lead">A tabela oficial da mesa do Cec. As cartas vão do 3 (mais forte) ao 4 (mais fraco). Quando duas manilhas se encontram, quem decide é o naipe: paus, copas, espadas e ouros.</p>
     </div>
+    <figure class="force-photo">
+      <img src="assets/tabela-de-forca.jpg" width="810" height="450" alt="Tabela de força do truco. Cartas, da mais forte para a mais fraca: 3, 2, A, K, J, Q, 7, 6, 5, 4. Naipes, do mais forte para o mais fraco: paus, copas, espadas, ouros.">
+      <figcaption>Cartas: 3 › 2 › A › K › J › Q › 7 › 6 › 5 › 4 &nbsp;·&nbsp; Naipes: ♣ › ♥ › ♠ › ♦</figcaption>
+    </figure>
+    <div class="sub-title">Descubra a manilha da mão</div>
     <div class="tabs" role="tablist">
-      <button role="tab" id="tab-mineiro" aria-selected="true" type="button">Mineiro (manilha fixa)</button>
-      <button role="tab" id="tab-paulista" aria-selected="false" type="button">Paulista (com vira)</button>
+      <button role="tab" id="tab-paulista" aria-selected="true" type="button">Com vira (manilha muda)</button>
+      <button role="tab" id="tab-mineiro" aria-selected="false" type="button">Mineiro (manilha fixa)</button>
     </div>
     <div class="paper force" id="force"></div>
   </div>
@@ -593,6 +602,7 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
     let data = {};
     try { data = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch (e) {}
     data = { partidas: [], individuais: [], fotos: {}, live: null, ...data };
+    if (data.zerado !== '2026-10-23') data = { ...data, partidas: [], individuais: [], live: null, zerado: '2026-10-23' }; // ranking zerado a pedido da galera
     const save = () => { try { localStorage.setItem(LS_KEY, JSON.stringify(data)); } catch (e) {} };
     const subs = [];
     const emit = () => subs.forEach(fn => fn(data));
@@ -1080,7 +1090,7 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
   $('#fan-cards').innerHTML = [['4', '♣'], ['7', '♥'], ['A', '♠'], ['7', '♦']].map(c => card(c[0], c[1])).join('');
   $('#signals').innerHTML = SIGNALS.map(s => `<div class="paper sig">${face(s.f)}<span class="what">${esc(s.carta)}</span><b>${esc(s.sinal)}</b><p>${esc(s.dica)}</p></div>`).join('');
   renderBoard();
-  renderForce('mineiro');
+  renderForce('paulista');
 
   function showModeNote(t) { $('#mode-note').textContent = t; }
   function renderAll() { renderPlayers(); renderPicks(); renderRanking(); renderLive(); }
