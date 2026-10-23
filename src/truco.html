@@ -236,11 +236,58 @@ section { padding-block: 56px; border-top: 1px solid var(--felt-line); }
 .av-photo img { position: absolute; inset: 9%; width: 82%; height: 82%; border-radius: 50%; object-fit: cover; }
 .av-photo svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
+/* abas do ranking */
+.mode-tabs { margin-bottom: 6px; }
+.mode-tabs button { font-size: 1rem; padding: 9px 18px; }
+#mode-note { margin: 0 0 22px; }
+.sub-title { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin: 22px 0 10px; }
+.sub-title:first-of-type { margin-top: 0; }
+.row.pair { grid-template-columns: 34px 74px minmax(0, 1fr) repeat(3, 52px) 64px; }
+.duo { display: flex; }
+.duo .av { width: 42px; height: 42px; }
+.duo .av + .av { margin-left: -12px; }
+.row.ind { grid-template-columns: 34px 46px minmax(0, 1fr) repeat(5, 56px); }
+
+/* jogo individual ao vivo */
+.live-wrap { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.live-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.live-badge { font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #fff; background: var(--red); border-radius: 999px; padding: 3px 10px; display: inline-flex; align-items: center; gap: 6px; }
+.live-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: pulse 1.2s infinite; }
+@keyframes pulse { 50% { opacity: .2; } }
+.lives { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
+.lp { border: 2px solid var(--paper-edge); background: #fff8e8; border-radius: 12px; padding: 12px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; position: relative; }
+.lp .av { width: 64px; height: 64px; }
+.lp b { font-size: 1rem; }
+.hearts { display: flex; gap: 4px; }
+.hearts svg { width: 22px; height: 20px; }
+.lp .acts2 { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; }
+.lp .acts2 button { border: 0; border-radius: 8px; padding: 6px 9px; font-weight: 700; font-size: .78rem; background: var(--ink); color: var(--paper); }
+.lp .acts2 button.t { background: var(--red); color: #fff; }
+.lp.out { opacity: .55; border-style: dashed; }
+.lp.out .av { filter: grayscale(1); }
+.lp .stamp { position: absolute; top: 34px; left: 50%; transform: translateX(-50%) rotate(-12deg); border: 3px solid var(--red); color: var(--red); font-weight: 800; font-size: .8rem; letter-spacing: .08em; padding: 2px 8px; border-radius: 6px; background: rgba(255,248,232,.9); white-space: nowrap; }
+.lp.champ { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(233,185,73,.4); }
+.lp.danger { border-color: var(--loss); }
+.live-foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 14px; }
+.live-foot .btn { padding: 8px 14px; font-size: .9rem; }
+.btn.dark { background: var(--ink); color: var(--paper); }
+.btn.line { background: transparent; color: var(--ink); border: 2px solid var(--paper-edge); }
+.live-log { margin-top: 12px; font-size: .82rem; color: var(--ink-soft); max-height: 120px; overflow-y: auto; border-top: 1px dashed var(--paper-edge); padding-top: 8px; }
+.live-log div + div { margin-top: 2px; }
+.champ-banner { background: var(--gold); border-radius: 12px; padding: 14px 16px; margin-top: 14px; display: grid; gap: 4px; }
+.champ-banner b { font-family: var(--display); font-weight: 400; font-size: 1.5rem; }
+.rules ol, .rules ul { margin: 6px 0 0; padding-left: 20px; font-size: .92rem; display: grid; gap: 4px; }
+.rules h3.mt { margin-top: 16px; }
+.rules .sub { margin-top: 12px; }
+.place { display: inline-flex; flex-wrap: wrap; gap: 4px 10px; }
+.place span { white-space: nowrap; }
+.place .gold { font-weight: 700; color: #1c6b46; }
+
 footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; border-top: 1px solid var(--felt-line); }
 
 @media (max-width: 900px) {
   .hero .wrap { grid-template-columns: 1fr; padding-block: 32px; }
-  .rank-grid, .two { grid-template-columns: minmax(0, 1fr); }
+  .rank-grid, .two, .live-wrap { grid-template-columns: minmax(0, 1fr); }
   .players { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .signals { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
@@ -254,6 +301,10 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
   nav.top .links { margin-left: 0; }
   .row { grid-template-columns: 26px 40px minmax(0, 1fr) 30px 30px 44px; gap: 6px; padding-inline: 10px; min-width: 0; }
   .row > :nth-child(7), .row > :nth-child(8) { display: none; }
+  .row.pair { grid-template-columns: 26px 62px minmax(0, 1fr) 30px 30px 44px; }
+  .duo .av { width: 36px; height: 36px; }
+  .row.ind { grid-template-columns: 26px 40px minmax(0, 1fr) 34px 30px 44px; }
+  .lives { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .row .av { width: 38px; height: 38px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -266,7 +317,8 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
   <div class="wrap">
     <a class="brand" href="#topo">Truco do Cec</a>
     <div class="links">
-      <a class="l" href="#ranking">Ranking</a>
+      <a class="l" href="#duplas">Duplas</a>
+      <a class="l" href="#individual">Individual</a>
       <a class="l" href="#placar">Placar</a>
       <a class="l" href="#tabela">Tabela de força</a>
       <a class="l" href="#sinais">Sinais</a>
@@ -282,8 +334,9 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
       <h1>Truco<span>do Cec</span></h1>
       <p>O ranking de quem manda na mesa. Pediu truco, segura o seis. Correu, vai pro histórico.</p>
       <div class="cta">
-        <a class="btn gold" href="#registrar">Registrar partida</a>
-        <a class="btn ghost" href="#tabela">Ver a tabela de força</a>
+        <a class="btn gold" href="#individual">Jogo de 3 vidas</a>
+        <a class="btn ghost" href="#duplas">Ranking de duplas</a>
+        <a class="btn ghost" href="#tabela">Tabela de força</a>
       </div>
     </div>
     <div class="fan" aria-label="As quatro manilhas: zap, sete de copas, espadilha e pica-fumo">
@@ -298,39 +351,82 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
     <div class="sec-head">
       <div class="eyebrow">Classificação geral</div>
       <h2>Quem é o rei da mesa</h2>
-      <p class="lead">Ordenado por vitórias, depois aproveitamento, depois saldo de tentos. A sequência mostra como cada um vem nas últimas partidas.</p>
+      <p class="lead">Dois campeonatos separados: o de duplas, valendo 12 tentos, e o individual, cada um por si com 3 vidas.</p>
     </div>
-    <div class="rank-grid">
-      <div>
-        <div id="podium"></div>
-        <div class="paper table" id="rank-table"></div>
-        <div class="mode-note" id="mode-note">Carregando o ranking…</div>
+    <div class="tabs mode-tabs" role="tablist" aria-label="Tipo de ranking">
+      <button role="tab" id="tab-duplas" aria-selected="true" aria-controls="pane-duplas" type="button">Duplas</button>
+      <button role="tab" id="tab-individual" aria-selected="false" aria-controls="pane-individual" type="button">Individual · 3 vidas</button>
+    </div>
+    <div class="mode-note" id="mode-note">Carregando o ranking…</div>
+
+    <div id="pane-duplas" role="tabpanel" aria-labelledby="tab-duplas">
+      <div class="rank-grid">
+        <div>
+          <div id="podium"></div>
+          <div class="sub-title">Jogadores nas duplas</div>
+          <div class="paper table" id="rank-table"></div>
+          <div class="sub-title">Ranking de duplas</div>
+          <div class="paper table" id="pair-table"></div>
+        </div>
+        <div class="side" id="highlights"></div>
       </div>
-      <div class="side" id="highlights"></div>
+
+      <div class="two" id="registrar">
+        <form class="paper panel" id="match-form" novalidate>
+          <h3>Registrar partida de duplas</h3>
+          <p class="sub">Escolha a dupla que ganhou e a dupla que perdeu. O vencedor fecha em 12.</p>
+          <span class="fl">Venceu</span>
+          <div class="picks" id="pick-w"></div>
+          <span class="fl">Perdeu</span>
+          <div class="picks" id="pick-l"></div>
+          <span class="fl">Placar e data</span>
+          <div class="score-in">
+            <span class="fixed" aria-label="Tentos do vencedor">12</span>
+            <span>×</span>
+            <input id="tp" type="number" min="0" max="11" value="8" aria-label="Tentos de quem perdeu">
+            <input id="dt" type="date" aria-label="Data da partida">
+          </div>
+          <div style="margin-top:16px"><button class="btn gold" id="save-btn" type="submit">Salvar no ranking</button></div>
+          <div class="form-msg" id="form-msg" role="status"></div>
+        </form>
+        <div class="paper panel">
+          <h3>Últimas partidas</h3>
+          <p class="sub">As 15 mais recentes. Errou o registro? Apague e lance de novo.</p>
+          <ul class="hist" id="hist"></ul>
+        </div>
+      </div>
     </div>
 
-    <div class="two" id="registrar">
-      <form class="paper panel" id="match-form" novalidate>
-        <h3>Registrar partida</h3>
-        <p class="sub">Escolha quem ganhou e quem perdeu (1 contra 1 ou dupla contra dupla). O vencedor fecha em 12.</p>
-        <span class="fl">Venceu</span>
-        <div class="picks" id="pick-w"></div>
-        <span class="fl">Perdeu</span>
-        <div class="picks" id="pick-l"></div>
-        <span class="fl">Placar e data</span>
-        <div class="score-in">
-          <span class="fixed" aria-label="Tentos do vencedor">12</span>
-          <span>×</span>
-          <input id="tp" type="number" min="0" max="11" value="8" aria-label="Tentos de quem perdeu">
-          <input id="dt" type="date" aria-label="Data da partida">
+    <div id="pane-individual" role="tabpanel" aria-labelledby="tab-individual" hidden>
+      <div class="live-wrap" id="ao-vivo">
+        <div class="paper panel live" id="live"></div>
+        <div class="paper panel rules">
+          <h3>Como funciona</h3>
+          <ol>
+            <li>Cada um joga por si. Todo mundo começa com <b>3 vidas</b>.</li>
+            <li>Perdeu a mão, perde 1 vida. Pediu truco e perdeu, perde 2.</li>
+            <li>Zerou as vidas, está fora. O último vivo é o campeão.</li>
+          </ol>
+          <h3 class="mt">Pontuação</h3>
+          <ul>
+            <li>Cada jogador que caiu antes de você vale <b>1 ponto</b>.</li>
+            <li>O campeão ainda ganha <b>1 ponto por vida que sobrou</b>.</li>
+            <li>Ganhar com as 3 vidas é <b>vitória perfeita</b>.</li>
+          </ul>
+          <p class="sub">Exemplo com 5 na mesa: campeão com 2 vidas faz 4 + 2 = 6 pontos, o 2º faz 3, o 3º faz 2, o 4º faz 1 e o primeiro a cair faz 0.</p>
         </div>
-        <div style="margin-top:16px"><button class="btn gold" id="save-btn" type="submit">Salvar no ranking</button></div>
-        <div class="form-msg" id="form-msg" role="status"></div>
-      </form>
-      <div class="paper panel">
-        <h3>Últimas partidas</h3>
-        <p class="sub">As 15 mais recentes. Errou o registro? Apague e lance de novo.</p>
-        <ul class="hist" id="hist"></ul>
+      </div>
+      <div class="rank-grid" style="margin-top:28px">
+        <div>
+          <div id="ind-podium"></div>
+          <div class="paper table" id="ind-table"></div>
+        </div>
+        <div class="side" id="ind-highlights"></div>
+      </div>
+      <div class="paper panel" style="margin-top:20px">
+        <h3>Últimos jogos individuais</h3>
+        <p class="sub">Colocação de cada jogo, do campeão ao primeiro a cair.</p>
+        <ul class="hist" id="ind-hist"></ul>
       </div>
     </div>
   </div>
@@ -483,60 +579,74 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
 
   /* ---------- dados ---------- */
   let partidas = [];
+  let individuais = [];
+  let live = null;
   let fotos = {};
   const useDrawing = {};
   let canWrite = true;
   let store = null;
+  const MAX_VIDAS = 3;
 
   const LS_KEY = 'truco-cec-v1';
+  const newId = () => 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
   function localStore() {
-    let data = { partidas: [], fotos: {} };
-    try { data = JSON.parse(localStorage.getItem(LS_KEY)) || data; } catch (e) {}
+    let data = {};
+    try { data = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch (e) {}
+    data = { partidas: [], individuais: [], fotos: {}, live: null, ...data };
     const save = () => { try { localStorage.setItem(LS_KEY, JSON.stringify(data)); } catch (e) {} };
     const subs = [];
     const emit = () => subs.forEach(fn => fn(data));
     return {
       mode: 'local',
       subscribe(fn) { subs.push(fn); fn(data); },
-      async add(m) { data.partidas.push({ ...m, id: 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6) }); save(); emit(); },
-      async remove(id) { data.partidas = data.partidas.filter(m => m.id !== id); save(); emit(); },
-      async setFoto(pid, url) { if (url) data.fotos[pid] = url; else delete data.fotos[pid]; save(); emit(); },
+      async add(col, m) { data = { ...data, [col]: [...data[col], { ...m, id: newId() }] }; save(); emit(); },
+      async remove(col, id) { data = { ...data, [col]: data[col].filter(m => m.id !== id) }; save(); emit(); },
+      async setFoto(pid, url) { const f = { ...data.fotos }; if (url) f[pid] = url; else delete f[pid]; data = { ...data, fotos: f }; save(); emit(); },
+      async setLive(st) { data = { ...data, live: st }; save(); emit(); },
     };
   }
   function dbStore(db) {
-    let state = { partidas: [], fotos: {} };
+    let state = { partidas: [], individuais: [], fotos: {}, live: null };
     const subs = [];
     const emit = () => subs.forEach(fn => fn(state));
-    db.collection('partidas').onSnapshot(snap => {
-      state = { ...state, partidas: snap.docs.map(d => ({ id: d.id, ...d.data() })) };
+    const fail = () => showModeNote('Não deu para carregar o ranking agora. Recarregue a página.');
+    ['partidas', 'individuais'].forEach(col => db.collection(col).onSnapshot(snap => {
+      state = { ...state, [col]: snap.docs.map(d => ({ id: d.id, ...d.data() })) };
       emit();
-    }, err => showModeNote('Não deu para carregar o ranking agora. Recarregue a página.'));
+    }, fail));
     db.collection('fotos').onSnapshot(snap => {
       const f = {};
       snap.docs.forEach(d => { const v = d.data(); if (v && v.img) f[d.id] = v.img; });
       state = { ...state, fotos: f };
       emit();
     }, () => {});
+    db.doc('jogo/atual').onSnapshot(snap => {
+      state = { ...state, live: snap.exists ? snap.data() : null };
+      emit();
+    }, () => {});
     return {
       mode: 'db',
       subscribe(fn) { subs.push(fn); fn(state); },
-      add: m => db.collection('partidas').add(m),
-      remove: id => db.doc('partidas/' + id).delete(),
+      add: (col, m) => db.collection(col).add(m),
+      remove: (col, id) => db.doc(col + '/' + id).delete(),
       setFoto: (pid, url) => url ? db.doc('fotos/' + pid).set({ img: url }) : db.doc('fotos/' + pid).delete(),
+      setLive: st => db.doc('jogo/atual').set(st),
     };
   }
 
-  /* ---------- estatísticas ---------- */
+  /* ---------- estatísticas: duplas ---------- */
+  const byDate = (a, b) => (a.data || '').localeCompare(b.data || '') || (a.criadoEm || 0) - (b.criadoEm || 0);
   function computeStats() {
     const s = {};
     PLAYERS.forEach(p => s[p.id] = { id: p.id, v: 0, d: 0, pro: 0, contra: 0, hist: [] });
-    const ordered = [...partidas].sort((a, b) => (a.data || '').localeCompare(b.data || '') || (a.criadoEm || 0) - (b.criadoEm || 0));
     const pairs = {};
-    ordered.forEach(m => {
+    const pair = ids => { const k = [...ids].sort().join('+'); return pairs[k] || (pairs[k] = { k, ids: k.split('+'), v: 0, d: 0, saldo: 0 }); };
+    [...partidas].sort(byDate).forEach(m => {
       const tv = 12, tp = Number(m.tp) || 0;
       (m.vencedores || []).forEach(id => { if (!s[id]) return; s[id].v++; s[id].pro += tv; s[id].contra += tp; s[id].hist.push('V'); });
       (m.perdedores || []).forEach(id => { if (!s[id]) return; s[id].d++; s[id].pro += tp; s[id].contra += tv; s[id].hist.push('D'); });
-      if ((m.vencedores || []).length === 2) { const k = [...m.vencedores].sort().join('+'); pairs[k] = (pairs[k] || 0) + 1; }
+      if ((m.vencedores || []).length === 2) { const p = pair(m.vencedores); p.v++; p.saldo += tv - tp; }
+      if ((m.perdedores || []).length === 2) { const p = pair(m.perdedores); p.d++; p.saldo += tp - tv; }
     });
     Object.values(s).forEach(x => {
       x.j = x.v + x.d;
@@ -550,19 +660,52 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
       x.best = best;
     });
     const ranking = Object.values(s).sort((a, b) => b.v - a.v || b.pct - a.pct || b.saldo - a.saldo || byId[a.id].nome.localeCompare(byId[b.id].nome));
-    return { s, ranking, pairs };
+    const pairRank = Object.values(pairs).filter(p => p.ids.every(id => byId[id])).map(p => ({ ...p, pct: Math.round(100 * p.v / (p.v + p.d)) }))
+      .sort((a, b) => b.v - a.v || b.pct - a.pct || b.saldo - a.saldo);
+    return { s, ranking, pairRank };
+  }
+
+  /* ---------- estatísticas: individual ---------- */
+  // Cada jogador que caiu antes vale 1 ponto; o campeão soma 1 ponto por vida que sobrou.
+  function pontos(pos, n, vidasRestantes) { return (n - 1 - pos) + (pos === 0 ? vidasRestantes : 0); }
+  function computeInd() {
+    const s = {};
+    PLAYERS.forEach(p => s[p.id] = { id: p.id, pts: 0, j: 0, vit: 0, perf: 0, somaPos: 0, primeiro: 0 });
+    individuais.forEach(g => {
+      const col = (g.colocacao || []).filter(id => s[id]);
+      const n = col.length;
+      col.forEach((id, i) => {
+        const x = s[id];
+        x.j++; x.somaPos += i + 1;
+        x.pts += pontos(i, n, Number(g.vidasRestantes) || 0);
+        if (i === 0) { x.vit++; if (Number(g.vidasRestantes) === (g.maxVidas || MAX_VIDAS)) x.perf++; }
+        if (i === n - 1 && n > 1) x.primeiro++;
+      });
+    });
+    Object.values(s).forEach(x => { x.media = x.j ? x.somaPos / x.j : 0; });
+    const ranking = Object.values(s).sort((a, b) => b.pts - a.pts || b.vit - a.vit || (a.j && b.j ? a.media - b.media : b.j - a.j) || byId[a.id].nome.localeCompare(byId[b.id].nome));
+    return { s, ranking };
   }
 
   const crown = `<svg class="crown" viewBox="0 0 34 22" aria-hidden="true"><path d="M2 20 L4 6 L11 13 L17 2 L23 13 L30 6 L32 20 Z" fill="#e9b949" stroke="#8a6512" stroke-width="1.5"/></svg>`;
+  const pl = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
+  const names = ids => (ids || []).map(id => esc(byId[id] ? byId[id].nome : id)).join(' & ');
+  function fmtDate(d) { if (!d) return ''; const [y, m, dd] = d.split('-'); return `${dd}/${m}/${y}`; }
+  const hlItem = (ic, k, v) => `<div class="paper hl"><span class="ic">${ic}</span><span class="k">${k}</span><span class="val">${esc(v)}</span></div>`;
+  function podium(ranking, line) {
+    return `<div class="podium">${[1, 0, 2].map(i => {
+      const r = ranking[i]; if (!r) return '<div></div>';
+      return `<div class="pod p${i + 1}">${i === 0 ? crown : ''}${avatar(r.id)}<div class="nm">${esc(byId[r.id].nome)}</div><div class="v num">${line(r)}</div><div class="stand"><div class="pos">${i + 1}º</div></div></div>`;
+    }).join('')}</div>`;
+  }
+  const delBtn = id => canWrite ? `<button class="x" type="button" data-del="${esc(id)}">Apagar</button>` : '';
+  const newestFirst = (a, b) => (b.data || '').localeCompare(a.data || '') || (b.criadoEm || 0) - (a.criadoEm || 0);
 
   function renderRanking() {
-    const { s, ranking, pairs } = computeStats();
+    const { s, ranking, pairRank } = computeStats();
     const has = partidas.length > 0;
 
-    $('#podium').innerHTML = has ? `<div class="podium">${[1, 0, 2].map(i => {
-      const r = ranking[i]; if (!r) return '<div></div>';
-      return `<div class="pod p${i + 1}">${i === 0 ? crown : ''}${avatar(r.id)}<div class="nm">${esc(byId[r.id].nome)}</div><div class="v num">${r.v} V · ${r.pct}%</div><div class="stand"><div class="pos">${i + 1}º</div></div></div>`;
-    }).join('')}</div>` : '';
+    $('#podium').innerHTML = has ? podium(ranking, r => `${r.v} V · ${r.pct}%`) : '';
 
     const rows = ranking.map((r, i) => {
       const chip = r.seq ? `<span class="chip ${r.seq.endsWith('V') ? 'w' : 'l'}">${r.seq.endsWith('V') ? pl(Number(r.seq.slice(0, -1)), 'vitória', 'vitórias') : pl(Number(r.seq.slice(0, -1)), 'derrota', 'derrotas')}</span>` : '<span class="chip n">sem jogos</span>';
@@ -573,41 +716,183 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
         <span class="c">${chip}</span></div>`;
     }).join('');
     $('#rank-table').innerHTML = `<div class="row head"><span>#</span><span></span><span>Jogador</span><span class="c">V</span><span class="c">D</span><span class="c">Aprov.</span><span class="c">Saldo</span><span class="c">Fase</span></div>${rows}`
-      + (has ? '' : `<div class="empty"><b>Nenhuma partida registrada ainda</b>Lance a primeira em “Registrar partida” e o ranking ganha vida.</div>`);
+      + (has ? '' : `<div class="empty"><b>Nenhuma partida de duplas ainda</b>Lance a primeira em “Registrar partida de duplas”.</div>`);
+
+    $('#pair-table').innerHTML = `<div class="row pair head"><span>#</span><span></span><span>Dupla</span><span class="c">V</span><span class="c">D</span><span class="c">Aprov.</span><span class="c">Saldo</span></div>`
+      + (pairRank.length ? pairRank.map((p, i) => `<div class="row pair${i === 0 ? ' first' : ''}">
+        <span class="p">${i + 1}</span><span class="duo">${avatar(p.ids[0])}${avatar(p.ids[1])}</span>
+        <div class="who"><b>${names(p.ids)}</b><div class="bar"><i style="width:${p.pct}%"></i></div></div>
+        <span class="c num">${p.v}</span><span class="c num">${p.d}</span><span class="c num">${p.pct}%</span><span class="c num">${p.saldo > 0 ? '+' : ''}${p.saldo}</span></div>`).join('')
+        : `<div class="empty"><b>Nenhuma dupla jogou ainda</b>Cada combinação de dois jogadores ganha sua própria linha aqui.</div>`);
 
     let hl = '';
     if (has) {
       const leader = ranking[0];
       const bestStreak = [...ranking].sort((a, b) => b.best - a.best)[0];
       const pe = [...ranking].sort((a, b) => b.d - a.d || a.pct - b.pct)[0];
-      const pairTop = Object.entries(pairs).sort((a, b) => b[1] - a[1])[0];
-      hl += item('1', 'Rei da mesa', `${byId[leader.id].nome} · ${pl(leader.v, 'vitória', 'vitórias')}`);
-      hl += item('»', 'Maior sequência', bestStreak.best ? `${byId[bestStreak.id].nome} · ${pl(bestStreak.best, 'vitória seguida', 'seguidas')}` : 'Ninguém emendou ainda');
-      hl += item('2', 'Melhor dupla', pairTop ? `${pairTop[0].split('+').map(id => byId[id].nome).join(' & ')} · ${pl(pairTop[1], 'vitória', 'vitórias')}` : 'Nenhuma dupla venceu ainda');
-      hl += item('×', 'Pé-frio da rodada', pe.d ? `${byId[pe.id].nome} · ${pl(pe.d, 'derrota', 'derrotas')}` : 'Ninguém perdeu ainda');
-      hl += item('#', 'Partidas jogadas', `${partidas.length}`);
+      const pairTop = pairRank[0];
+      hl += hlItem('1', 'Rei das duplas', `${byId[leader.id].nome} · ${pl(leader.v, 'vitória', 'vitórias')}`);
+      hl += hlItem('2', 'Melhor dupla', pairTop && pairTop.v ? `${pairTop.ids.map(id => byId[id].nome).join(' & ')} · ${pl(pairTop.v, 'vitória', 'vitórias')}` : 'Nenhuma dupla venceu ainda');
+      hl += hlItem('»', 'Maior sequência', bestStreak.best ? `${byId[bestStreak.id].nome} · ${pl(bestStreak.best, 'vitória seguida', 'seguidas')}` : 'Ninguém emendou ainda');
+      hl += hlItem('×', 'Pé-frio', pe.d ? `${byId[pe.id].nome} · ${pl(pe.d, 'derrota', 'derrotas')}` : 'Ninguém perdeu ainda');
+      hl += hlItem('#', 'Partidas de duplas', `${partidas.length}`);
     } else {
-      hl += item('?', 'Rei da mesa', 'Vago. Quem vai ser?');
-      hl += item('#', 'Partidas jogadas', '0');
+      hl += hlItem('?', 'Rei das duplas', 'Vago. Quem vai ser?');
+      hl += hlItem('#', 'Partidas de duplas', '0');
     }
     $('#highlights').innerHTML = hl;
-    function item(ic, k, v) { return `<div class="paper hl"><span class="ic">${ic}</span><span class="k">${k}</span><span class="val">${esc(v)}</span></div>`; }
 
-    // histórico
-    const recent = [...partidas].sort((a, b) => (b.data || '').localeCompare(a.data || '') || (b.criadoEm || 0) - (a.criadoEm || 0)).slice(0, 15);
+    const recent = [...partidas].sort(newestFirst).slice(0, 15);
     $('#hist').innerHTML = recent.length ? recent.map(m => `<li data-id="${esc(m.id)}">
         <div><div class="m"><span class="wn">${names(m.vencedores)}</span> <span class="num">12 × ${Number(m.tp) || 0}</span> <span class="ls">${names(m.perdedores)}</span></div><div class="d">${fmtDate(m.data)}</div></div>
-        ${canWrite ? `<button class="x" type="button" data-del="${esc(m.id)}">Apagar</button>` : ''}</li>`).join('')
+        ${delBtn(m.id)}</li>`).join('')
       : `<li><div class="empty" style="padding:8px 0;text-align:left"><b>Mesa limpa</b>As partidas registradas aparecem aqui.</div></li>`;
 
-    // recordes nos cards de jogador
-    PLAYERS.forEach(p => { const el = document.getElementById('rec-' + p.id); if (el) el.textContent = `${s[p.id].v}V · ${s[p.id].d}D`; });
+    renderInd();
+    const ind = computeInd().s;
+    PLAYERS.forEach(p => { const el = document.getElementById('rec-' + p.id); if (el) el.textContent = `Duplas ${s[p.id].v}V ${s[p.id].d}D · Individual ${pl(ind[p.id].pts, 'pt', 'pts')}`; });
   }
-  const pl = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
-  const names = ids => (ids || []).map(id => esc(byId[id] ? byId[id].nome : id)).join(' & ');
-  function fmtDate(d) { if (!d) return ''; const [y, m, dd] = d.split('-'); return `${dd}/${m}/${y}`; }
 
-  $('#hist').addEventListener('click', async e => {
+  function renderInd() {
+    const { ranking } = computeInd();
+    const has = individuais.length > 0;
+    $('#ind-podium').innerHTML = has ? podium(ranking, r => `${pl(r.pts, 'pt', 'pts')} · ${r.vit} V`) : '';
+    $('#ind-table').innerHTML = `<div class="row ind head"><span>#</span><span></span><span>Jogador</span><span class="c">Pts</span><span class="c">Vit.</span><span class="c">Jogos</span><span class="c">Média</span><span class="c">Perf.</span></div>`
+      + ranking.map((r, i) => `<div class="row ind${i === 0 && has ? ' first' : ''}">
+        <span class="p">${i + 1}</span>${avatar(r.id)}
+        <div class="who"><b>${esc(byId[r.id].nome)}</b><span>${esc(byId[r.id].apelido)}</span></div>
+        <span class="c num"><b>${r.pts}</b></span><span class="c num">${r.vit}</span><span class="c num">${r.j}</span>
+        <span class="c num">${r.j ? r.media.toFixed(1).replace('.', ',') + 'º' : '–'}</span><span class="c num">${r.perf}</span></div>`).join('')
+      + (has ? '' : `<div class="empty"><b>Nenhum jogo individual ainda</b>Comece um jogo de 3 vidas acima. Quando sobrar um, salve no ranking.</div>`);
+
+    let hl = '';
+    if (has) {
+      const top = ranking[0];
+      const perf = [...ranking].sort((a, b) => b.perf - a.perf)[0];
+      const vit = [...ranking].sort((a, b) => b.vit - a.vit)[0];
+      const saco = [...ranking].sort((a, b) => b.primeiro - a.primeiro)[0];
+      hl += hlItem('1', 'Rei do individual', `${byId[top.id].nome} · ${pl(top.pts, 'ponto', 'pontos')}`);
+      hl += hlItem('V', 'Mais títulos', vit.vit ? `${byId[vit.id].nome} · ${pl(vit.vit, 'vitória', 'vitórias')}` : 'Ninguém ainda');
+      hl += hlItem('3', 'Vitória perfeita', perf.perf ? `${byId[perf.id].nome} · ${pl(perf.perf, 'vez', 'vezes')} com as 3 vidas` : 'Ninguém ganhou sem perder vida');
+      hl += hlItem('×', 'Primeiro a cair', saco.primeiro ? `${byId[saco.id].nome} · ${pl(saco.primeiro, 'vez', 'vezes')}` : 'Ninguém ainda');
+      hl += hlItem('#', 'Jogos individuais', `${individuais.length}`);
+    } else {
+      hl += hlItem('?', 'Rei do individual', 'Vago. Quem vai ser?');
+      hl += hlItem('#', 'Jogos individuais', '0');
+    }
+    $('#ind-highlights').innerHTML = hl;
+
+    const recent = [...individuais].sort(newestFirst).slice(0, 15);
+    $('#ind-hist').innerHTML = recent.length ? recent.map(g => {
+      const col = (g.colocacao || []).filter(id => byId[id]);
+      return `<li data-id="${esc(g.id)}"><div><div class="m place">${col.map((id, i) => `<span class="${i === 0 ? 'gold' : ''}">${i + 1}º ${esc(byId[id].nome)}${i === 0 ? ` (${pl(Number(g.vidasRestantes) || 0, 'vida', 'vidas')})` : ''} <span class="num">+${pontos(i, col.length, Number(g.vidasRestantes) || 0)}</span></span>`).join('')}</div><div class="d">${fmtDate(g.data)}</div></div>${delBtn(g.id)}</li>`;
+    }).join('') : `<li><div class="empty" style="padding:8px 0;text-align:left"><b>Nenhum jogo salvo</b>Os jogos de 3 vidas aparecem aqui com a colocação de cada um.</div></li>`;
+  }
+
+  /* ---------- jogo individual ao vivo ---------- */
+  const heart = on => `<svg viewBox="0 0 22 20" aria-hidden="true"><path d="M11 19 L2.5 10.5 A5 5 0 0 1 11 3.5 A5 5 0 0 1 19.5 10.5 Z" fill="${on ? '#c42537' : 'none'}" stroke="${on ? '#8e1726' : '#bfb294'}" stroke-width="2"/></svg>`;
+  const indSel = new Set(PLAYERS.map(p => p.id));
+  let liveConfirm = false;
+  let liveWrite = Promise.resolve();
+  const activeLive = () => live && (live.status === 'jogando' || live.status === 'fim') && Array.isArray(live.jogadores) ? live : null;
+  function pushLive(st) {
+    live = st; renderLive();
+    liveWrite = liveWrite.then(() => store.setLive(st)).catch(() => { liveMsg = 'Não deu para salvar a jogada. Confira sua conexão.'; renderLive(); });
+  }
+  let liveMsg = '';
+  function renderLive() {
+    const g = activeLive();
+    const dis = canWrite ? '' : 'disabled';
+    if (!g) {
+      $('#live').innerHTML = `<div class="live-top"><h3>Novo jogo de 3 vidas</h3></div>
+        <p class="sub">Marque quem está na mesa (de 2 a 5 jogadores) e comece. Todo mundo vê as vidas ao vivo neste link.</p>
+        <div class="picks" id="ind-picks">${PLAYERS.map(p => `<button type="button" class="pick wsel" data-ind="${p.id}" aria-pressed="${indSel.has(p.id)}">${avatar(p.id)}${esc(p.nome)}</button>`).join('')}</div>
+        <div class="live-foot"><button class="btn gold" type="button" id="live-start" ${dis || (indSel.size < 2 ? 'disabled' : '')}>Começar com ${indSel.size} jogadores</button></div>
+        <div class="form-msg err">${esc(liveMsg)}</div>`;
+      return;
+    }
+    const vivos = g.jogadores.filter(id => g.vidas[id] > 0);
+    const fim = g.status === 'fim';
+    const posOf = id => g.jogadores.length - g.eliminados.indexOf(id);
+    const cards = g.jogadores.filter(id => byId[id]).map(id => {
+      const v = g.vidas[id];
+      const out = v <= 0;
+      const champ = fim && !out;
+      return `<div class="lp${out ? ' out' : ''}${champ ? ' champ' : ''}${!out && v === 1 && !fim ? ' danger' : ''}">
+        ${champ ? crown : ''}${avatar(id)}${out ? `<span class="stamp">FORA · ${posOf(id)}º</span>` : ''}
+        <b>${esc(byId[id].nome)}</b>
+        <div class="hearts" aria-label="${pl(Math.max(0, v), 'vida', 'vidas')}">${Array.from({ length: g.maxVidas || MAX_VIDAS }, (_, i) => heart(i < v)).join('')}</div>
+        ${!out && !fim ? `<div class="acts2"><button type="button" data-hit="${id}" data-n="1" ${dis}>Perdeu a mão −1</button><button type="button" class="t" data-hit="${id}" data-n="2" ${dis}>Truco −2</button></div>` : ''}
+        ${!out && v === 1 && !fim ? '<span class="chip l">Última vida!</span>' : ''}
+      </div>`;
+    }).join('');
+    const champ = fim ? vivos[0] : null;
+    const n = g.jogadores.length;
+    const banner = fim && champ ? `<div class="champ-banner"><b>${esc(byId[champ].nome)} é o campeão!</b><span>Terminou com ${pl(g.vidas[champ], 'vida', 'vidas')} e leva ${pl(pontos(0, n, g.vidas[champ]), 'ponto', 'pontos')}${g.vidas[champ] === (g.maxVidas || MAX_VIDAS) ? '. Vitória perfeita!' : '.'}</span></div>` : '';
+    const log = [...(g.log || [])].reverse().slice(0, 12).map(e => `<div>${esc(byId[e.id] ? byId[e.id].nome : '')} perdeu ${pl(e.n, 'vida', 'vidas')}${e.n === 2 ? ' no truco' : ''}${e.fora ? ' e está fora' : ''}.</div>`).join('');
+    $('#live').innerHTML = `<div class="live-top"><h3>Jogo de 3 vidas</h3>${fim ? '<span class="chip w">Fim de jogo</span>' : `<span class="live-badge">Ao vivo · ${pl(vivos.length, 'vivo', 'vivos')}</span>`}</div>
+      <div class="lives">${cards}</div>${banner}
+      <div class="live-foot">
+        ${fim ? `<button class="btn gold" type="button" id="live-save" ${dis}>Salvar no ranking</button>` : ''}
+        ${(g.log || []).length ? `<button class="btn line" type="button" id="live-undo" ${dis}>Desfazer última</button>` : ''}
+        ${liveConfirm ? `<span>Descartar este jogo?</span><button class="btn dark" type="button" id="live-discard-yes">Sim, descartar</button><button class="btn line" type="button" id="live-discard-no">Não</button>`
+          : `<button class="btn line" type="button" id="live-discard" ${dis}>${fim ? 'Descartar' : 'Cancelar jogo'}</button>`}
+      </div>
+      <div class="form-msg err">${esc(liveMsg)}</div>
+      ${log ? `<div class="live-log">${log}</div>` : ''}`;
+  }
+  $('#live').addEventListener('click', async e => {
+    const t = e.target.closest('button'); if (!t) return;
+    liveMsg = '';
+    const g = activeLive();
+    if (t.dataset.ind) {
+      const id = t.dataset.ind;
+      indSel.has(id) ? indSel.delete(id) : indSel.add(id);
+      return renderLive();
+    }
+    if (t.id === 'live-start') {
+      const jogadores = PLAYERS.map(p => p.id).filter(id => indSel.has(id));
+      return pushLive({ status: 'jogando', jogadores, vidas: Object.fromEntries(jogadores.map(id => [id, MAX_VIDAS])), maxVidas: MAX_VIDAS, eliminados: [], log: [], inicio: Date.now() });
+    }
+    if (!g) return;
+    const st = JSON.parse(JSON.stringify(g));
+    if (t.dataset.hit && st.status === 'jogando') {
+      const id = t.dataset.hit;
+      const lost = Math.min(Number(t.dataset.n), st.vidas[id]);
+      if (lost <= 0) return;
+      st.vidas[id] -= lost;
+      const fora = st.vidas[id] === 0;
+      if (fora) st.eliminados.push(id);
+      st.log.push({ id, n: lost, fora });
+      if (st.jogadores.filter(p => st.vidas[p] > 0).length <= 1) st.status = 'fim';
+      return pushLive(st);
+    }
+    if (t.id === 'live-undo') {
+      const last = st.log.pop(); if (!last) return;
+      st.vidas[last.id] += last.n;
+      st.eliminados = st.eliminados.filter(id => st.vidas[id] <= 0);
+      st.status = 'jogando';
+      return pushLive(st);
+    }
+    if (t.id === 'live-discard') { liveConfirm = true; return renderLive(); }
+    if (t.id === 'live-discard-no') { liveConfirm = false; return renderLive(); }
+    if (t.id === 'live-discard-yes') { liveConfirm = false; return pushLive({ status: 'vazio' }); }
+    if (t.id === 'live-save' && st.status === 'fim') {
+      const champ = st.jogadores.find(id => st.vidas[id] > 0);
+      if (!champ) return;
+      t.disabled = true;
+      try {
+        await store.add('individuais', { jogadores: st.jogadores, colocacao: [champ, ...[...st.eliminados].reverse()], vidasRestantes: st.vidas[champ], maxVidas: st.maxVidas || MAX_VIDAS, data: today(), criadoEm: Date.now() });
+        pushLive({ status: 'vazio' });
+      } catch (err) {
+        liveMsg = err && err.code === 'invalid_argument' ? 'Você só pode ver o ranking. Peça acesso de Contribuidor para salvar.' : 'Não deu para salvar. Tente de novo.';
+        renderLive();
+      }
+    }
+  });
+
+  /* ---------- apagar do histórico ---------- */
+  [['#hist', 'partidas'], ['#ind-hist', 'individuais']].forEach(([sel, col]) => $(sel).addEventListener('click', async e => {
     const del = e.target.closest('[data-del]');
     const li = e.target.closest('li');
     if (del) {
@@ -615,9 +900,24 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
     } else if (e.target.closest('[data-no]')) {
       renderRanking();
     } else if (e.target.closest('[data-yes]') && li) {
-      try { await store.remove(li.dataset.id); } catch (err) { setMsg('Não deu para apagar. Tente de novo.', 'err'); }
+      try { await store.remove(col, li.dataset.id); } catch (err) { renderRanking(); }
     }
-  });
+  }));
+
+  /* ---------- abas do ranking ---------- */
+  function showTab(name) {
+    ['duplas', 'individual'].forEach(n => {
+      $('#tab-' + n).setAttribute('aria-selected', n === name);
+      $('#pane-' + n).hidden = n !== name;
+    });
+    try { localStorage.setItem('truco-cec-aba', name); } catch (e) {}
+  }
+  ['duplas', 'individual'].forEach(n => $('#tab-' + n).addEventListener('click', () => showTab(n)));
+  function fromHash() {
+    const h = location.hash.slice(1);
+    if (h === 'duplas' || h === 'individual') { showTab(h); $('#ranking').scrollIntoView(); }
+  }
+  window.addEventListener('hashchange', fromHash);
 
   /* ---------- formulário ---------- */
   const sel = { w: new Set(), l: new Set() };
@@ -645,12 +945,11 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
     e.preventDefault();
     const w = [...sel.w], l = [...sel.l];
     const tp = Number($('#tp').value);
-    if (!w.length || !l.length) return setMsg('Escolha quem venceu e quem perdeu.', 'err');
-    if (w.length !== l.length) return setMsg('Os dois lados precisam ter o mesmo número de jogadores.', 'err');
+    if (w.length !== 2 || l.length !== 2) return setMsg('Marque 2 jogadores em cada dupla. Jogo de um contra um vai na aba Individual.', 'err');
     if (!Number.isInteger(tp) || tp < 0 || tp > 11) return setMsg('Os tentos de quem perdeu vão de 0 a 11.', 'err');
     const btn = $('#save-btn'); btn.disabled = true;
     try {
-      await store.add({ vencedores: w, perdedores: l, tp, data: $('#dt').value || today(), criadoEm: Date.now() });
+      await store.add('partidas', { vencedores: w, perdedores: l, tp, data: $('#dt').value || today(), criadoEm: Date.now() });
       sel.w.clear(); sel.l.clear(); renderPicks();
       setMsg(`Salvo: ${w.map(id => byId[id].nome).join(' & ')} venceu.`, 'ok');
     } catch (err) {
@@ -688,6 +987,7 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
     if (e.target.id !== 'to-form') return;
     const loser = board.a >= 12 ? board.b : board.a;
     $('#tp').value = Math.min(11, loser);
+    showTab('duplas');
     $('#registrar').scrollIntoView({ behavior: 'smooth' });
     setMsg('Placar copiado. Agora marque quem venceu e quem perdeu.');
   });
@@ -783,20 +1083,22 @@ footer { padding-block: 28px 40px; color: var(--chalk-dim); font-size: .85rem; b
   renderForce('mineiro');
 
   function showModeNote(t) { $('#mode-note').textContent = t; }
-  function renderAll() { renderPlayers(); renderPicks(); renderRanking(); }
+  function renderAll() { renderPlayers(); renderPicks(); renderRanking(); renderLive(); }
   function applyWrite() {
     $('#save-btn').disabled = !canWrite;
     if (!canWrite) setMsg('Você está só olhando. Para registrar partidas, peça acesso de Contribuidor a quem compartilhou.');
   }
   function start(s) {
     store = s;
-    store.subscribe(data => { partidas = data.partidas; fotos = data.fotos; renderAll(); });
+    store.subscribe(data => { partidas = data.partidas; individuais = data.individuais; fotos = data.fotos; live = data.live; renderAll(); });
     showModeNote(s.mode === 'db'
       ? 'Ranking compartilhado: todo mundo que abre este link vê os mesmos resultados.'
       : 'Os resultados ficam salvos neste navegador.');
     applyWrite();
   }
+  try { const aba = localStorage.getItem('truco-cec-aba'); if (aba === 'individual') showTab(aba); } catch (e) {}
   renderAll();
+  fromHash();
 
   if (window.claude && typeof window.claude.use === 'function') {
     (async () => {
